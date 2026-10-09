@@ -377,6 +377,42 @@ for p in ("img/off.png", "en/img/off.png"):
         open(d, "wb").write(PNG_1PX)
         _log.append("PLACEHOLDER %s" % p)
 
+# ---------- 7. 마무리 정리 ----------
+# (1) gnuboard JS 전역변수의 http 절대주소 -> https (HTTPS 전환 시 혼합콘텐츠 방지)
+# (2) link.php(외부 관련링크) 를 최종 목적지 URL 로 치환
+link_map = {}
+for outpath, h in pages.items():
+    for m in re.findall(r'(?:href|src)=["\']([^"\']*link\.php[^"\']*)["\']', h):
+        u = html.unescape(m)
+        if "pactivekorea.com" not in u:
+            continue
+        path = urllib.parse.urlparse(u).path
+        query = urllib.parse.urlparse(u).query
+        try:
+            rr = sess.get(BASE + path + "?" + query, allow_redirects=False, timeout=30)
+            loc = rr.headers.get("Location")
+            if loc:
+                link_map[path + "?" + query] = loc
+                _log.append("LINK %s -> %s" % (path + "?" + query, loc))
+        except Exception:
+            pass
+
+for root, _dirs, files in os.walk(OUT):
+    if ".git" in root:
+        continue
+    for fn in files:
+        if not fn.endswith((".html", ".js", ".css")):
+            continue
+        p = os.path.join(root, fn)
+        c = open(p, encoding="utf-8", errors="replace").read()
+        o = c
+        c = c.replace("http://www.pactivekorea.com/gnuboard5",
+                      "https://www.pactivekorea.com/gnuboard5")
+        for a, b in link_map.items():
+            c = re.sub(r'https?://www\.pactivekorea\.com' + re.escape(a), b, c)
+        if c != o:
+            open(p, "w", encoding="utf-8").write(c)
+
 open(os.path.join(OUT, ".nojekyll"), "w").write("")
 print("\n".join(_log))
 print("=== DONE:", OUT)
