@@ -14,6 +14,7 @@ BASE = "http://www.pactivekorea.com"
 OUT = os.environ.get("OUT_DIR", os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 REUSE = os.environ.get("REUSE", "") not in ("", "0")   # 이미 받아둔 파일은 다시 받지 않는다
+NO_WIPE = os.environ.get("NO_WIPE", "") not in ("", "0")  # 기존 결과물을 지우지 않는다
 UA = {"User-Agent": "Mozilla/5.0 (compatible; site-mirror/2.0)"}
 
 def blocked(txt):
@@ -32,7 +33,7 @@ if not _probe_ok:
     print("   기존 결과물을 보존하고 중단합니다. (한도는 보통 다음 날 초기화됩니다)")
     raise SystemExit(1)
 
-if os.path.isdir(OUT) and not REUSE:
+if os.path.isdir(OUT) and not REUSE and not NO_WIPE:
     # 저장소 메타 파일(.git, tools, README 등)은 남기고 사이트 결과물만 지운다
     KEEP = {".git", "tools", "README.md", ".gitignore", ".gitattributes"}
     for entry in os.listdir(OUT):
@@ -113,6 +114,10 @@ for u in ["/en/"] + ["/en/sub%d.php" % i for i in range(300, 325)] + \
 for t in BOARDS:
     u = "/gnuboard5/bbs/board.php?bo_table=" + t
     targets.append((u, board_out(u), "/gnuboard5/bbs/"))
+
+# ONLY_EN=1 : 영문 페이지만 갱신한다(한글 페이지는 그대로 둔다)
+if os.environ.get("ONLY_EN", "") not in ("", "0"):
+    targets = [t for t in targets if t[1].startswith("en/")]
 
 pages = {}     # outpath -> (html, src_url)
 page_src = {}  # outpath -> 원본 디렉터리
