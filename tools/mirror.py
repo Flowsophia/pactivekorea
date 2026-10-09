@@ -5,14 +5,34 @@ pactivekorea.com -> GitHub Pages(정적 사이트) 미러링 v2
 원본 사이트의 상대/절대 링크를 정확히 해석한 뒤,
 GitHub Pages 프로젝트 저장소에서도 동작하는 상대경로로 다시 쓴다.
 """
-import os, re, html, time, urllib.parse, threading, shutil
+import os, re, html, time, glob, urllib.parse, threading, shutil
 from concurrent.futures import ThreadPoolExecutor
 import requests, urllib3
 urllib3.disable_warnings()
 
 BASE = "http://www.pactivekorea.com"
 OUT = os.environ.get("OUT_DIR", os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-if os.path.isdir(OUT):
+
+REUSE = os.environ.get("REUSE", "") not in ("", "0")   # 이미 받아둔 파일은 다시 받지 않는다
+UA = {"User-Agent": "Mozilla/5.0 (compatible; site-mirror/2.0)"}
+
+def blocked(txt):
+    """Cafe24 일일 트래픽 한도 초과 안내 페이지 판별"""
+    return ("일일 방문 한도" in txt) or ("overTraffic" in txt) or ("hostinfo.cafe24.com" in txt)
+
+# 원본 서버 상태 점검 — 한도 초과면 기존 결과물을 지우지 않고 즉시 중단한다
+_probe_ok = False
+try:
+    _probe = requests.get(BASE + "/", timeout=25, verify=False, headers=UA)
+    _probe_ok = (_probe.status_code == 200) and not blocked(_probe.content.decode("utf-8", "replace"))
+except Exception:
+    _probe_ok = False
+if not _probe_ok:
+    print("!! 원본 서버가 응답하지 않거나 일일 트래픽 한도를 초과했습니다.")
+    print("   기존 결과물을 보존하고 중단합니다. (한도는 보통 다음 날 초기화됩니다)")
+    raise SystemExit(1)
+
+if os.path.isdir(OUT) and not REUSE:
     # 저장소 메타 파일(.git, tools, README 등)은 남기고 사이트 결과물만 지운다
     KEEP = {".git", "tools", "README.md", ".gitignore", ".gitattributes"}
     for entry in os.listdir(OUT):
@@ -43,16 +63,22 @@ def get(url, binary=False, tries=3):
                 raw = r.content
                 for enc in ("utf-8", "cp949", "euc-kr"):
                     try:
-                        return raw.decode(enc)
+                        t = raw.decode(enc)
+                        break
                     except UnicodeDecodeError:
                         continue
-                return raw.decode("utf-8", errors="replace")
+                else:
+                    t = raw.decode("utf-8", errors="replace")
+                if blocked(t):
+                    return None
+                return t
             return None
         except Exception:
             time.sleep(1.2 * (i + 1))
     return None
 
-BOARDS = {"sub401": "news", "sub402": "knowledge"}
+BOARDS = {"sub401": "news", "sub402": "knowledge",
+          "sub401_en": "en/news", "sub402_en": "en/knowledge"}
 
 def ko_out(u):
     """원본 사이트 경로 -> 정적 사이트 경로"""
@@ -81,7 +107,8 @@ for u in ["/"] + ["/sub%d.php" % i for i in range(101, 103)] + \
          ["/sub%d.php" % i for i in range(201, 203)] + \
          ["/sub%d.php" % i for i in range(301, 324)]:
     targets.append((u, ko_out(u), "/"))
-for u in ["/en/"] + ["/en/sub%d.php" % i for i in range(300, 325)]:
+for u in ["/en/"] + ["/en/sub%d.php" % i for i in range(300, 325)] + \
+         ["/en/sub%d.php" % i for i in (101, 102, 201, 202)]:
     targets.append((u, ko_out(u), "/en/"))
 for t in BOARDS:
     u = "/gnuboard5/bbs/board.php?bo_table=" + t
@@ -91,6 +118,9 @@ pages = {}     # outpath -> (html, src_url)
 page_src = {}  # outpath -> 원본 디렉터리
 
 def fetch_page(url, outpath, srcdir):
+    if REUSE and os.path.exists(os.path.join(OUT, outpath)) \
+            and os.path.getsize(os.path.join(OUT, outpath)) > 500:
+        return
     h = get(BASE + urllib.parse.quote(url, safe="/?=&%"))
     if h and len(h) > 500:
         with _lock:
@@ -266,8 +296,9 @@ def rewrite(h, outpath):
 
     def js_menu(m):
         code = m.group(1)
-        if code in BOARDS.values() or code in ("401", "402"):
-            return 'href="%s"' % map_url("/gnuboard5/bbs/board.php?bo_table=sub%s" % code, "/", depth)
+        if code in ("401", "402"):
+            t = "sub%s%s" % (code, "_en" if en else "")
+            return 'href="%s"' % map_url("/gnuboard5/bbs/board.php?bo_table=" + t, "/", depth)
         u = "/%ssub%s.php" % ("en/" if en else "", code)
         if en and ko_out(u) not in pages:
             u = "/sub%s.php" % code
@@ -283,7 +314,7 @@ def rewrite(h, outpath):
     # 2) 그 다음 javascript 메뉴 링크를 실제 정적 링크로 치환 (이중 변환 방지)
     h = re.sub(r'href="javascript:mainmenu\(\'(\d+)\'\)"', js_menu, h)
     return h.replace('href="javascript:main()"',
-                     'href="%s"' % ("../" * depth + "index.html"))
+                     'href="%s"' % ("../" * depth + ("en/index.html" if en else "index.html")))
 
 for outpath, h in pages.items():
     dest = os.path.join(OUT, outpath)
