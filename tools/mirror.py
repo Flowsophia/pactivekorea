@@ -452,7 +452,8 @@ if _PILImage:
             wh = _imgsize(os.path.normpath(os.path.join(d, u.split("?")[0].split("#")[0])))
             if not wh:
                 return tag
-            return tag[:-1].rstrip() + ' width="%d" height="%d">' % wh
+            body = tag[:-1].rstrip().rstrip("/").rstrip()
+            return body + ' width="%d" height="%d">' % wh
 
         new = re.sub(r"<img\b[^>]*>", _add_dim, c, flags=re.I)
         if new != c:
