@@ -413,6 +413,67 @@ for root, _dirs, files in os.walk(OUT):
         if c != o:
             open(p, "w", encoding="utf-8").write(c)
 
+# ---------- 8. 레이아웃 안정화 ----------
+# (1) 모든 img 에 width/height 주입 -> 이미지 로딩 시 화면이 밀리는 현상(CLS) 제거
+# (2) html lang 속성 부여 -> 브라우저 자동번역으로 인한 재배치 방지
+# (3) 구글폰트 http:// -> https:// (HTTPS 페이지에서 차단되어 폰트가 바뀌는 문제)
+try:
+    from PIL import Image as _PILImage
+except Exception:
+    _PILImage = None
+
+if _PILImage:
+    _size_cache = {}
+
+    def _imgsize(p):
+        if p in _size_cache:
+            return _size_cache[p]
+        try:
+            with _PILImage.open(p) as im:
+                _size_cache[p] = im.size
+        except Exception:
+            _size_cache[p] = None
+        return _size_cache[p]
+
+    for f in glob.glob(os.path.join(OUT, "**", "*.html"), recursive=True):
+        d = os.path.dirname(f)
+        c = open(f, encoding="utf-8", errors="replace").read()
+
+        def _add_dim(m):
+            tag = m.group(0)
+            if re.search(r"\bwidth\s*=", tag, re.I) or re.search(r"\bheight\s*=", tag, re.I):
+                return tag
+            ms = re.search(r'src\s*=\s*["\']([^"\']+)["\']', tag, re.I)
+            if not ms:
+                return tag
+            u = html.unescape(ms.group(1))
+            if u.startswith(("http", "data:", "//")):
+                return tag
+            wh = _imgsize(os.path.normpath(os.path.join(d, u.split("?")[0].split("#")[0])))
+            if not wh:
+                return tag
+            return tag[:-1].rstrip() + ' width="%d" height="%d">' % wh
+
+        new = re.sub(r"<img\b[^>]*>", _add_dim, c, flags=re.I)
+        if new != c:
+            open(f, "w", encoding="utf-8").write(new)
+
+for f in glob.glob(os.path.join(OUT, "**", "*.html"), recursive=True):
+    c = open(f, encoding="utf-8", errors="replace").read()
+    if re.search(r"<html\s+lang=", c, re.I):
+        continue
+    rel = os.path.relpath(f, OUT)
+    lang = "en" if rel.startswith("en" + os.sep) else "ko"
+    new = re.sub(r"<html(\s|>)", '<html lang="%s"\\1' % lang, c, count=1, flags=re.I)
+    if new != c:
+        open(f, "w", encoding="utf-8").write(new)
+
+for f in glob.glob(os.path.join(OUT, "**", "*.css"), recursive=True):
+    c = open(f, encoding="utf-8", errors="replace").read()
+    if "fonts.googleapis.com" in c and "https://fonts.googleapis.com" not in c:
+        open(f, "w", encoding="utf-8").write(
+            c.replace("http://fonts.googleapis.com", "https://fonts.googleapis.com"))
+
 open(os.path.join(OUT, ".nojekyll"), "w").write("")
 print("\n".join(_log))
 print("=== DONE:", OUT)
