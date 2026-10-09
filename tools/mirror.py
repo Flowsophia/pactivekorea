@@ -201,6 +201,27 @@ for root, _dirs, files in os.walk(OUT):
             except UnicodeDecodeError:
                 continue
 
+# 런타임(JS)에서 _off -> _on 으로 교체되는 메뉴 이미지도 함께 내려받는다.
+_extra = set()
+for root, _dirs, files in os.walk(OUT):
+    if ".git" in root:
+        continue
+    for fn in files:
+        if "_off" in fn:
+            _extra.add(os.path.join(root, fn.replace("_off", "_on")))
+for _p in sorted(_extra):
+    if os.path.exists(_p):
+        continue
+    rel = os.path.relpath(_p, OUT).replace(os.sep, "/")
+    try:
+        r = sess.get(BASE + rel, timeout=30)
+        if r.status_code == 200 and len(r.content) > 100:
+            os.makedirs(os.path.dirname(_p), exist_ok=True)
+            open(_p, "wb").write(r.content)
+            _log.append("EXTRA %s" % rel)
+    except Exception:
+        pass
+
 # ---------- 3. 링크 재작성 ----------
 def map_url(u, srcdir, depth):
     u = html.unescape(u).strip()
