@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="imagetoolbar" content="no">
+<meta http-equiv="X-UA-Compatible" content="IE=10,chrome=1">
+<title>지식커뮤니티 1 페이지 | 팩티브코리아</title>
+<link rel="stylesheet" href="../gnuboard5/css/default.css">
+<link rel="stylesheet" href="../gnuboard5/skin/board/notice/style.css">
+<!--[if lte IE 8]>
+<script src="../gnuboard5/js/html5.js"></script>
+<![endif]-->
+<script>
+// 자바스크립트에서 사용하는 전역변수 선언
+var g5_url       = "http://www.pactivekorea.com/gnuboard5";
+var g5_bbs_url   = "http://www.pactivekorea.com/gnuboard5/bbs";
+var g5_is_member = "";
+var g5_is_admin  = "";
+var g5_is_mobile = "";
+var g5_bo_table  = "sub402";
+var g5_sca       = "";
+var g5_editor    = "";
+var g5_cookie_domain = "";
+</script>
+<script src="../gnuboard5/js/jquery-1.8.3.min.js"></script>
+<script src="../gnuboard5/js/jquery.menu.js"></script>
+<script src="../gnuboard5/js/common.js"></script>
+<script src="../gnuboard5/js/wrest.js"></script>
+
+</head>
+<body>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+<meta http-equiv="imagetoolbar" content="no">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="pragma" content="no-cache">
+<meta name="description" content="">
+<meta property="og:type" content="website">
+<meta property="og:title" content="">
+<meta property="og:description" content="">
+<title>팩티브코리아</title>
+<link href="../style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="../gnuboard5/skin/board/notice/style.css">
+<script language="javascript" src="../jquery-1.7.1.min.js" type="text/javascript"></script>
+<script language="javascript" src="../jquery.motionj.fadeBanner.js" type="text/javascript"></script>
+<script language="javascript" src="../menulink.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+$("#topmenu .gnb>li").hover(function() {
+var aa = $(this).find("img");
+var aasrc = $(aa).attr("src")
+var on = aasrc.replace("_off","_on");
+$(aa).attr("src",on);
+$(this).find(".gsub").slideDown("fast");
+} , function() {
+var aa = $(this).find("img");
+var aasrc = $(aa).attr("src")
+var off = aasrc.replace("_on","_off");
+$(aa).attr("src",off);
+$(this).find(".gsub").slideUp("fast");
+});
+
+});
+</script>
+
+<script type="text/javascript">
+(function($){
+$(document).ready(function(){
+$('#motionj_fade_01').motionj_fadeBanner({
+height : 549,
+speed : 500,	// fade 속도 조절.
+delay : 5000	// 모션이 되는 중간 딜레이
+});
+});
+})(jQuery);
+</script>
+
+
+
+</head>
+
+<body>
+
+<div id="header">
+  <div id="topmenu">
+    <div class="logo">
+        <p class="logo_img"><a href="../index.html"><img src="../img/logo.jpg" /></a></p>
+        <div class="tm">
+            <p><a href="../index.html">KOREAN</a></p>
+            <p><a href="../en">ENGLISH</a></p>
+        </div>
+    </div>
+    <!-- logo //-->
+    <ul class="gnb">
+        <li>
+            <a href="../sub101.html"><img src="../img/gnb_off_01.jpg"></a>
+            <ul class="gsub" id="submenu01">
+                <li><a href="../sub101.html" class="fi">대표인사말</a></li>
+                <li><a href="../sub102.html" class="la">오시는길</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="../sub201.html"><img src="../img/gnb_off_02.jpg"></a>
+            <ul class="gsub" id="submenu02">
+                <li><a href="../sub201.html" class="fi">분야별</a></li>
+                <li><a href="../sub202.html" class="la">시장별</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="../sub303.html"><img src="../img/gnb_off_03.jpg"></a>
+            <ul class="gsub" id="submenu03">
+
+                <!--<li><a href="../sub302.html">AK</a></li>-->
+                <li><a href="../sub303.html" class="fi">클로렌 (Cloeren)</a></li>
+                <!-- <li><a href="../sub310.html">NDC</a></li> -->
+                <!--<li><a href="../sub304.html">데이비스-스탠다드</a></li>-->
+                <!-- <li><a href="../sub307.html">헬리오스 (Helios)</a></li> -->
+                <li><a href="../sub321.html">모토나이프 (MOTOKNIFE)</a></li>
+                <li><a href="../sub322.html">마끼 (Macchi)</a></li>
+                <li><a href="../sub323.html">신크로 (Syncro)</a></li>
+                <li><a href="../sub308.html">힐드브랜드(Hildebrand)</a></li>
+                <li><a href="../sub316.html">에너콘(Enercon)</a></li>
+                <li><a href="../sub305.html">델콤 (Delcom)</a></li>
+                <!--<li><a href="../sub306.html">에너콘 (Enercon)</a></li>-->
+
+                <li><a href="../sub309.html">ICO 시스템</a></li>
+
+                <li><a href="../sub311.html" style="letter-spacing:-0.08em">팩티브 엔지니어링 (Pactive Engineering)</a></li>
+                <li><a href="../sub312.html">PSI</a></li>
+                <li><a href="../sub313.html">RMG</a></li>
+                <li><a href="../sub314.html">테크노메크3 (Technomec3)</a></li>
+                <li><a href="../sub315.html" class="la">악세서리</a></li>
+                <li><a href="../sub317.html">플렉소펨(Flexofem)</a></li>
+                <li><a href="../sub318.html">Pactive R&D</a></li>
+                <li><a href="../sub319.html">두께측정기 (자동화)</a></li>
+                <li><a href="../sub320.html">VEA 2액형 믹서기</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="../news/index.html"><img src="../img/gnb_off_04.jpg"></a>
+            <ul class="gsub" id="submenu04">
+                <li><a href="../news/index.html" class="fi">뉴스</a></li>
+                <li><a href="../knowledge/index.html" class="la">지식커뮤니티</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+</div>
+<!-- header //-->
+<div class="subvs"></div>
+<div id="sub_container">
+
+  <div id="subContent">
+
+    <div id="left">
+      <p class="tit">정보센터</p>
+<ul>
+  <li><a href="../news/index.html" >뉴스</a></li>
+  <li><a href="../knowledge/index.html"  class="on">지식커뮤니티</a></li>
+</ul>    </div>
+    <!-- left //-->
+    <div id="content">
+      <div class="sub_tit">지식커뮤니티</div>
+      <div class="sub_con">
+<!--h2 id="container_title">지식커뮤니티<span class="sound_only"> 목록</span></h2-->
+
+<!-- 게시판 목록 시작 { -->
+<div id="bo_list" style="width:100%">
+
+    <!-- 게시판 카테고리 시작 { -->
+        <!-- } 게시판 카테고리 끝 -->
+
+    <!-- 게시판 페이지 정보 및 버튼 시작 { -->
+    <div class="bo_fx">
+        <div id="bo_list_total">
+            <span>Total 5건</span>
+            1 페이지
+        </div>
+
+            </div>
+    <!-- } 게시판 페이지 정보 및 버튼 끝 -->
+
+    <form name="fboardlist" id="fboardlist" action="./board_list_update.php" onsubmit="return fboardlist_submit(this);" method="post">
+    <input type="hidden" name="bo_table" value="sub402">
+    <input type="hidden" name="sfl" value="">
+    <input type="hidden" name="stx" value="">
+    <input type="hidden" name="spt" value="">
+    <input type="hidden" name="sca" value="">
+    <input type="hidden" name="page" value="1">
+    <input type="hidden" name="sw" value="">
+
+    <div class="tbl_head01 tbl_wrap">
+        <table>
+        <caption>지식커뮤니티 목록</caption>
+        <thead>
+        <tr>
+            <th scope="col">번호</th>
+                        <th scope="col">제목</th>
+            <th scope="col">글쓴이</th>
+            <th scope="col"><a href="../knowledge/index.html">날짜</a></th>
+            <th scope="col"><a href="../knowledge/index.html">조회</a></th>
+                                </tr>
+        </thead>
+        <tbody>
+                <tr class="">
+            <td class="td_num">
+            5            </td>
+                        <td class="td_subject">
+                
+                <a href="../knowledge/6.html">
+                    Slot Die 슬롯 다이 팩티브 슬롯다이 (Pactive Slot Die) 기술: 정밀 코팅의 새로운 지평…                                    </a>
+
+                <img src="../gnuboard5/skin/board/notice/img/icon_hot.gif" alt="인기글">            </td>
+            <td class="td_name sv_use"><span class="sv_member">CK</span></td>
+            <td class="td_date">06-19</td>
+            <td class="td_num">106</td>
+                                </tr>
+                <tr class="">
+            <td class="td_num">
+            4            </td>
+                        <td class="td_subject">
+                
+                <a href="../knowledge/5.html">
+                    고성능 플라즈마 표면 처리 기술 (에너콘) 기술세미나 Koplas2025                                    </a>
+
+                <img src="../gnuboard5/skin/board/notice/img/icon_hot.gif" alt="인기글"><img src="../gnuboard5/skin/board/notice/img/icon_file.gif" alt="첨부파일">            </td>
+            <td class="td_name sv_use"><span class="sv_member">CK</span></td>
+            <td class="td_date">03-03</td>
+            <td class="td_num">139</td>
+                                </tr>
+                <tr class="">
+            <td class="td_num">
+            3            </td>
+                        <td class="td_subject">
+                
+                <a href="../knowledge/4.html">
+                    새로운 플라스틱 세계가 열렀습니다. 새로운 플라스틱 압출에는 새로운 스크류 디자인                                    </a>
+
+                <img src="../gnuboard5/skin/board/notice/img/icon_hot.gif" alt="인기글"><img src="../gnuboard5/skin/board/notice/img/icon_file.gif" alt="첨부파일">            </td>
+            <td class="td_name sv_use"><span class="sv_member">CK</span></td>
+            <td class="td_date">02-23</td>
+            <td class="td_num">116</td>
+                                </tr>
+                <tr class="">
+            <td class="td_num">
+            2            </td>
+                        <td class="td_subject">
+                
+                <a href="../knowledge/3.html">
+                    팩티브의 에너지 절약과 재료 소모의 감소방법                                    </a>
+
+                <img src="../gnuboard5/skin/board/notice/img/icon_hot.gif" alt="인기글">            </td>
+            <td class="td_name sv_use"><span class="sv_member">CK</span></td>
+            <td class="td_date">04-15</td>
+            <td class="td_num">398</td>
+                                </tr>
+                <tr class="">
+            <td class="td_num">
+            1            </td>
+                        <td class="td_subject">
+                
+                <a href="../knowledge/2.html">
+                    플라스틱 압출이란?                                    </a>
+
+                <img src="../gnuboard5/skin/board/notice/img/icon_hot.gif" alt="인기글">            </td>
+            <td class="td_name sv_use"><span class="sv_member">CK</span></td>
+            <td class="td_date">03-31</td>
+            <td class="td_num">724</td>
+                                </tr>
+                        </tbody>
+        </table>
+    </div>
+
+        </form>
+</div>
+
+
+<!-- 페이지 -->
+
+<!-- 게시판 검색 시작 { -->
+<fieldset id="bo_sch">
+    <legend>게시물 검색</legend>
+
+    <form name="fsearch" method="get">
+    <input type="hidden" name="bo_table" value="sub402">
+    <input type="hidden" name="sca" value="">
+    <input type="hidden" name="sop" value="and">
+    <label for="sfl" class="sound_only">검색대상</label>
+    <select name="sfl" id="sfl">
+        <option value="wr_subject">제목</option>
+        <option value="wr_content">내용</option>
+        <option value="wr_subject||wr_content">제목+내용</option>
+        <option value="mb_id,1">회원아이디</option>
+        <option value="mb_id,0">회원아이디(코)</option>
+        <option value="wr_name,1">글쓴이</option>
+        <option value="wr_name,0">글쓴이(코)</option>
+    </select>
+    <label for="stx" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
+    <input type="text" name="stx" value="" required id="stx" class="frm_input required" size="15" maxlength="15">
+    <input type="submit" value="검색" class="btn_submit">
+    </form>
+</fieldset>
+<!-- } 게시판 검색 끝 -->
+
+<!-- } 게시판 목록 끝 -->
+</div>
+      <!-- sub_con //-->
+    </div>
+    <!-- content //-->
+
+  </div>
+  <!-- subContents //-->
+
+</div>
+<!--sub_ container //-->
+
+<div id="footer">
+  <div id="tail">
+ <div class="sns">
+     <div><a href="https://blog.naver.com/cloeren" target="_blank"><img src="../img/blog.png" alt=""></a></div>
+     <div><a href="https://www.facebook.com/pactivekorea" target="_blank"><img src="../img/facebook.png" alt=""></a></div>
+     <div><a href="https://twitter.com/pactivekorea" target="_blank"><img src="../img/twiter.png" alt=""></a></div>
+     <div><a href="https://www.instagram.com/pactive/" target="_blank"><img src="../img/insta.png" alt=""></a></div>
+     <div><a href="https://www.linkedin.com/in/pactivekorea" target="_blank"><img src="../img/Linkedin.png" alt=""></a></div>
+     <div><a href="https://www.youtube.com/channel/UCakPeMTc8ICQxS6k4yra9FQ" target="_blank"><img src="../img/youtube.png" alt=""></a></div>
+ </div>
+  <p class="foot"><img src="../img/foot.jpg" alt="" /></p>
+  <p class="copy">
+  <span><b>팩티브코리아</b></span>
+  <span>주소 : (우)04797 서울특별시 성동구 성수이로 118 성수아카데미타워 1611호</span><br/>
+  <span>대표자명 : 박진숙</span>
+  <span>전화 : 02-438-0287 </span>
+  <span>팩스 : 02-433-0287</span>
+  <span>사업자등록 : 204-17-77448</span>
+  <span>Email : asiafield@msn.com</span><br/>
+  <span>Copyright &copy; 2016 Pactive Korea. All rights reserved.</span>
+  </p>
+  <p class="cus"><img src="../img/customer.jpg" alt="" /></p>
+  <!-- copy //-->
+</div>
+<!-- tail //--></div>
+<!-- footer //-->
+</body>
+</html>
+<!-- 사용스킨 : notice -->
+
+
+<!-- ie6,7에서 사이드뷰가 게시판 목록에서 아래 사이드뷰에 가려지는 현상 수정 -->
+<!--[if lte IE 7]>
+<script>
+$(function() {
+    var $sv_use = $(".sv_use");
+    var count = $sv_use.length;
+
+    $sv_use.each(function() {
+        $(this).css("z-index", count);
+        $(this).css("position", "relative");
+        count = count - 1;
+    });
+});
+</script>
+<![endif]-->
+
+</body>
+</html>

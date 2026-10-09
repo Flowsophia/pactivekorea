@@ -1,0 +1,309 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+<meta http-equiv="imagetoolbar" content="no">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="pragma" content="no-cache">
+<meta name="description" content="">
+<meta property="og:type" content="website">
+<meta property="og:title" content="">
+<meta property="og:description" content="">
+<title>í©í°ë¸ì½ë¦¬ì</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script language="javascript" src="jquery-1.7.1.min.js" type="text/javascript"></script>
+<script language="javascript" src="jquery.motionj.fadeBanner.js" type="text/javascript"></script>
+<script language="javascript" src="menulink.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+$("#topmenu .gnb>li").hover(function() {
+var aa = $(this).find("img");
+var aasrc = $(aa).attr("src")
+var on = aasrc.replace("_off","_on");
+$(aa).attr("src",on);
+$(this).find(".gsub").slideDown("fast");
+} , function() {
+var aa = $(this).find("img");
+var aasrc = $(aa).attr("src")
+var off = aasrc.replace("_on","_off");
+$(aa).attr("src",off);
+$(this).find(".gsub").slideUp("fast");
+});
+
+});
+</script>
+
+<script type="text/javascript">
+(function($){
+$(document).ready(function(){
+$('#motionj_fade_01').motionj_fadeBanner({
+height : 549,
+speed : 500,	// fade ìë ì¡°ì .
+delay : 5000	// ëª¨ìì´ ëë ì¤ê° ëë ì´
+});
+});
+})(jQuery);
+</script>
+
+
+</head>
+
+<body>
+
+<div id="header">
+  <div id="topmenu">
+    <div class="logo">
+        <p class="logo_img"><a href="index.html"><img src="img/logo.jpg" /></a></p>
+        <div class="tm">
+            <p><a href="index.html">KOREAN</a></p>
+            <p><a href="en">ENGLISH</a></p>
+        </div>
+    </div>
+    <!-- logo //-->
+    <ul class="gnb">
+        <li>
+            <a href="sub101.html"><img src="img/gnb_off_01.jpg"></a>
+            <ul class="gsub" id="submenu01">
+                <li><a href="sub101.html" class="fi">ëíì¸ì¬ë§</a></li>
+                <li><a href="sub102.html" class="la">ì¤ìëê¸¸</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="sub201.html"><img src="img/gnb_off_02.jpg"></a>
+            <ul class="gsub" id="submenu02">
+                <li><a href="sub201.html" class="fi">ë¶ì¼ë³</a></li>
+                <li><a href="sub202.html" class="la">ìì¥ë³</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="sub303.html"><img src="img/gnb_off_03.jpg"></a>
+            <ul class="gsub" id="submenu03">
+
+                <!--<li><a href="sub302.html">AK</a></li>-->
+                <li><a href="sub303.html" class="fi">í´ë¡ë  (Cloeren)</a></li>
+                <!-- <li><a href="sub310.html">NDC</a></li> -->
+                <!--<li><a href="sub304.html">ë°ì´ë¹ì¤-ì¤í ë¤ë</a></li>-->
+                <!-- <li><a href="sub307.html">í¬ë¦¬ì¤ì¤ (Helios)</a></li> -->
+                <li><a href="sub321.html">ëª¨í ëì´í (MOTOKNIFE)</a></li>
+                <li><a href="sub322.html">ë§ë¼ (Macchi)</a></li>
+                <li><a href="sub323.html">ì í¬ë¡ (Syncro)</a></li>
+                <li><a href="sub308.html">íëë¸ëë(Hildebrand)</a></li>
+                <li><a href="sub316.html">ìëì½(Enercon)</a></li>
+                <li><a href="sub305.html">ë¸ì½¤ (Delcom)</a></li>
+                <!--<li><a href="sub306.html">ìëì½ (Enercon)</a></li>-->
+
+                <li><a href="sub309.html">ICO ìì¤í</a></li>
+
+                <li><a href="sub311.html" style="letter-spacing:-0.08em">í©í°ë¸ ìì§ëì´ë§ (Pactive Engineering)</a></li>
+                <li><a href="sub312.html">PSI</a></li>
+                <li><a href="sub313.html">RMG</a></li>
+                <li><a href="sub314.html">íí¬ë¸ë©í¬3 (Technomec3)</a></li>
+                <li><a href="sub315.html" class="la">ìì¸ìë¦¬</a></li>
+                <li><a href="sub317.html">íë ìí¨(Flexofem)</a></li>
+                <li><a href="sub318.html">Pactive R&D</a></li>
+                <li><a href="sub319.html">ëê»ì¸¡ì ê¸° (ìëí)</a></li>
+                <li><a href="sub320.html">VEA 2ì¡í ë¯¹ìê¸°</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="news/index.html"><img src="img/gnb_off_04.jpg"></a>
+            <ul class="gsub" id="submenu04">
+                <li><a href="news/index.html" class="fi">ë´ì¤</a></li>
+                <li><a href="knowledge/index.html" class="la">ì§ìì»¤ë®¤ëí°</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+</div>
+<!-- header //-->
+<div class="subvs"></div>
+<div id="sub_container">
+
+  <div id="subContent">
+
+    <div id="left">
+      <p class="tit">ì íìê°</p>
+<ul>
+
+  <!--<li><a href="sub302.html" >AK</a></li>-->
+  <li><a href="sub303.html" >í´ë¡ë  (Cloeren)</a></li>
+  <!-- <li><a href="sub310.html" >NDC</a></li> -->
+  <!-- <li><a href="sub307.html" >í¬ë¦¬ì¤ì¤ (Helios)</a></li> -->
+   
+  <li><a href="sub321.html" >ëª¨í ëì´í (MOTOKNIFE)</a></li>
+  <li><a href="sub322.html" >ë§ë¼ (Macchi)</a></li>
+  <li><a href="sub323.html" >ì í¬ë¡ (Syncro)</a></li>
+
+  <li><a href="sub308.html"  class="on">íëë¸ëë(Hildebrand)</a></li>
+  <li><a href="sub316.html" >ìëì½(Enercon)</a></li>
+  <!--<li><a href="sub304.html" >ë°ì´ë¹ì¤-ì¤í ë¤ë</a></li>-->
+  <li><a href="sub305.html" >ë¸ì½¤ (Delcom)</a></li>
+  <!--<li><a href="sub306.html" >ìëì½ (Enercon)</a></li>-->
+
+  <li><a href="sub309.html" >ICO ìì¤í</a></li>
+
+  <li><a href="sub311.html" >í©í°ë¸ ìì§ëì´ë§ <br />(Pactive Engineering)</a></li>
+  <li><a href="sub312.html" >PSI</a></li>
+  <li><a href="sub313.html" >RMG</a></li>
+  <li><a href="sub314.html" >íí¬ë¸ë©í¬3 (Technomec3)</a></li>
+  <li><a href="sub315.html" >ìì¸ìë¦¬</a></li>
+  <li><a href="sub317.html" >íë ìí¨(Flexofem)</a></li>
+  <li><a href="sub318.html" >Pactive R&D</a></li>
+  <li><a href="sub319.html" >ëê»ì¸¡ì ê¸° (ìëí)</a></li>
+  <li><a href="sub320.html" >VEA 2ì¡í ë¯¹ìê¸°</a></li>
+</ul>    </div>
+    <!-- left //-->
+    <div id="content">
+	  <div class="sub_tit">
+	  <p>íëë¸ëë(Hildebrand)</p>
+	  <p class="sub_log"><img src="img/sub308_logo.jpg" alt="" /></p>
+	  </div>
+      <div class="sub_con">
+	  <div class="sub301_tx">
+	  <p class="s_tit"><b>íëë¸ëë, ì ì ê¸°ì ê±°ì¥ì¹ ë° ì¹í´ë¦¬ë</b></p>
+	  <p>ì ê°ë ê³ ì±ë¥ ì ì ê¸°ì ê±°ì¥ì¹ ë° ì¹í´ë¦¬ë ì ë½ ë° ì ì¸ê³ì ê³µê¸</p>
+	  </div>
+
+	  <div class="sub301_tx">
+	  <p class="s_tit"><b>ì ì ê¸° ì ê±°ì¥ì¹<span>(ION stream FUSION)</span></b></p>
+	  <p><img src="img/sub308_01.jpg" alt="" /></p>
+	  	  <p>- IONstream FUSION: ê³ ì±ë¥ AUTODCÂ® ë° TRUEDCÂ® ì ì ê¸°ì ê±°ì¥ì¹<br />
+- ì ì ê¸°ì ê±°ë° ë°©ì í¨ì¨, íì¤ì¼ ë° íìíë¥¼ LEDë¨í/ëª¨ëí° íµí´ ì¤ìê° íì¸<br />
+- ìë¨íë©´ì +/- ì´ì¨ìíë¥¼ ìë ê°ì§í´ ì íì  ì ì ê¸° ì ê±°ë¡ ì¸í ê³ í¨ì¨ì±</p>
+	  </div>
+
+	  <div class="sub301_tx">
+	  <p class="s_tit"><b>ë¤í¸ìí¬ì¤ì¹</b></p>
+	  <p>ì IONstream FUSION(ì ì ê¸°ì ê±°ì¥ì¹)ë ì½ê³  ë¹ ë¥´ê² ë¤í¸ìí¬ ìì¤íì íµí©ëì´, 
+ì ì ê¸° ì ê±°ë°ì ìí ë° ìë¥ ì ì ê¸°ëì ì¬ë¬´ì¤ììë íì¸ê°ë¥.</p>
+	  <p class="img"><img src="img/sub308_02.jpg" alt="" /></p>
+	  </div>
+	  
+	  <div class="sub301_tx">
+	  <p class="s_tit"><b>ì¹í´ë¦¬ë ìì¤í</b></p>
+	  <p>ë¹ì ì´ì íë¦/ìí¸ ìë¨ í´ë¦¬ë (Xstream)</p>
+	  <p class="img"><img src="img/sub308_03.jpg" alt="" /></p>
+	  <p style="font-size:15px">íí¬ëë¡ì§: í´ë¦¬ëëª¨ëì ì§ê³µê³¼ ìë¨ì¤í¼ëì ì¡°íë¥¼ íµí ì´ê³ ì ê³µê¸°ì íë¦ì¼ë¡ ìë¨ì ê²½ê³ì¸µì íììì¼ ì´ ì¸µìì ë¹ ì§ ìì(ë¨¼ì§, 
+íí°í´)ë¥¼ ê°ì ë¡ í´ë¦¬ëëª¨ëë¡ ì´ëìí´. <br />
+ì ì ê¸°ì ê±°: íë¦ê³¼ ê°ì ì ì°ì²´ë ë§ì°°ì ìí´ ì¤ì¼ì¦ê°ì ì£¼ììì¸ ì ì ê¸°ë¥¼ ë°ììí´. Xstream ì¹í´ë¦¬ë ë´ì AUTODCÂ® ì ì ê¸°ì ê±°
+ì¥ì¹ê° ì ì ê¸°ë¥¼ ì ê±°í´ í´ë¦¬ë íë¡ì¸ì¤ìì ëª¨ë  ììë¤ì´ ì½ê² ì ê±°ëëë¡ í´ì¤ëë¤.</p>
+<p class="img"><img src="img/sub308_04.jpg" alt="" /></p>
+	  </div>
+
+	  	  <div class="sub301_tx">
+	  <p class="s_tit"><b>ì ì´ì íë©´í´ë¦¬ë ì ì°©ë¡¤<span>(NANO tack)</span></b></p>
+	  <style type="text/css">
+	  .sub301_info:after {content:""; height:0; clear:both; display:block; visibility:hidden; }
+	  </style>
+	  <div class="sub301_info">
+	    <div style="float:left"><img src="img/sub308_05_1.jpg" alt="" /></div>
+	    <div style="float:left; margin-left:30px; width:510px">
+	      <div style="padding-top:60px; font-size:14px; letter-spacing:-0.03em">
+          <p>NANOtack ì ì°©ë¡¤ì í´ë¦¬ë¨¸ ë¡¤ê¸°ì ì ê·¼ê±° ë¡¤ë¬íë©´ì ì¼ì í ì ì°©ì±ì´ ì§ì  ìë¨ ì ì´ì 
+		     íµí´ ìë¨ìì 0.5Î¼m ì´ìì ìì ì ê±°. ì½íì´ë ë¼ë¯¸ë¤ì´í¸ë ì¢ì´, íë¦, í¬ì¼ì¸ í´ë¦°ë£¸, 
+		     ìì, ì½íí¬ì¥ì  íë©´ì ê·¹ìë ìì¬ íí¸í´ ì ê±°í¨. <br />
+		     ìë¨ìë 500m/min, ììí­ 4000mm ê¹ì§ ìì. ë¨ë©´ í¹ì ìë©´ í´ë¦¬ë.
+			 </p>
+	      </div>
+       </div>
+     </div>
+	 <!--//sub301_info-->
+	  </div>
+
+	  	  <div class="sub301_tx">
+	  <p class="s_tit"><b>ì¬ë¦¬í°ì© ë¨¼ì§ì ê±° ìì¤í <span>(ì§ë¶ì ê±°ê¸°, Slitting Dust Removal)</span> SLITstream</b></p>
+	  <p>SLITstream-N  AUTODC Technology </p>
+	  <style type="text/css">
+	  .sub301_info:after {content:""; height:0; clear:both; display:block; visibility:hidden; }
+	  </style>
+	  <div class="sub301_info">
+	    <div style="float:left"><img src="img/sub308_06_1.jpg" alt="" /></div>
+	    <div style="float:left; margin-left:30px; width:510px">
+	      <div style="margin-bottom:65px; padding-top:60px; font-size:14px;letter-spacing:-0.03em">
+          <p>ì¬ë¦¿ì¤í¸ë¦¼ ì¬ë¦¬í°ì© ë¨¼ì§ì ê±°ìì¤íì í¹ë³í ëìì¸ë ë¨¼ì§ì¶ì¶ íëê° ìëì ë¶ì°©ë¼ 
+		     ê³ ìì ìì´íë¦ì ì´ì©í´ ê·¹ìì íí°í´ê¹ì§ ì ê±°í¨. <br />ì ê·/ê¸°ì¡´ ì¬ë¦¬í°ì ë¶ì°©ê°ë¥íë©° 
+		     ê¸°ì¡´ ëì´í ê°ì´ëë¥¼ ì¬ë¦¿ì¤í¸ë¦¼ ìì¤íì ìí´ ìê·¸ë ì´ë í¨.
+			 </p>
+	      </div>
+		  <div style="margin-bottom:30px; padding-top:30px; font-size:14px;letter-spacing:-0.03em">
+          <p>ê¸°ì  ìë¦¬: ëì´ííëì ë² í ìì¤íì ì¬ì©í´ ì»¤í ì§ì ìì í¨ì¨ì ì¼ë¡ ë¨¼ì§ë¥¼ <br />ì ê±°
+		     íë©°, ê³ ì±ë¥ ì¬ë¦¿ì¤í¸ë¦¼ ê¸°ì ì´ ë¨¼ì§ì ê±° í¨ì¨ì ì£¼ì ììì¸ ê³µê¸°ëê³¼ ìë ë° ë°©í¥ì 
+		     ì ì´í©ëë¤.
+			 </p>
+	      </div>
+         <div style="font-size:14px;letter-spacing:-0.07em">
+          <p>ìë¨ íë©´ì ì ì ê¸°ë¥¼ AUTODCÂ® ì ì ê¸°ì ê±°ì¥ì¹ê° í¨ê³¼ì ì¼ë¡ ì ê±°í´ ëª¨ë  ììë¤ì´ 
+		     ì½ê² ë² í ìì¤íì¼ë¡ ë°°ì¶ëëë¡ í´ì¤ëë¤.
+			 </p>
+	      </div>
+       </div>
+     </div>
+	 <!--//sub301_info-->
+	  </div>
+
+	   	  <div class="sub301_tx">
+	  <p>ë¶ì¼ë³ ì ì©ì¬ë¡</p>
+	  <ul class="sub301_list">
+	  <li>
+	  <p><img src="img/sub308_7_1.jpg" alt="" /></p>
+	  <p style="font-size:13px">SLITstream <br />Printing/ Packaging printing of paper or cardboard</p>
+	  </li>
+	  <li>
+	  <p><img src="img/sub308_7_2.jpg" alt="" /></p>
+	  <p style="font-size:13px">SLITstream-N <br />Nonwoven</p>
+	  </li>
+	  <li>
+	  <p><img src="img/sub308_7_3.jpg" alt="" /></p>
+	  <p style="font-size:13px">SLITstream <br /> Pharmaceutical film, clean room</p>
+	  </li>
+	  <li>
+	  <p><img src="img/sub308_7_4.jpg" alt="" /></p>
+	  <p style="font-size:13px">SLITstream-N <br /> Production and converting of textil or tissue</p>
+	  </li>
+	  </ul>
+	  </div>
+
+
+
+      </div>
+      <!-- sub_con //-->
+    </div>
+    <!-- content //-->
+
+  </div>
+  <!-- subContents //-->
+
+</div>
+<!--sub_ container //-->
+
+<div id="footer">
+  <div id="tail">
+ <div class="sns">
+     <div><a href="https://blog.naver.com/cloeren" target="_blank"><img src="img/blog.png" alt=""></a></div>
+     <div><a href="https://www.facebook.com/pactivekorea" target="_blank"><img src="img/facebook.png" alt=""></a></div>
+     <div><a href="https://twitter.com/pactivekorea" target="_blank"><img src="img/twiter.png" alt=""></a></div>
+     <div><a href="https://www.instagram.com/pactive/" target="_blank"><img src="img/insta.png" alt=""></a></div>
+     <div><a href="https://www.linkedin.com/in/pactivekorea" target="_blank"><img src="img/Linkedin.png" alt=""></a></div>
+     <div><a href="https://www.youtube.com/channel/UCakPeMTc8ICQxS6k4yra9FQ" target="_blank"><img src="img/youtube.png" alt=""></a></div>
+ </div>
+  <p class="foot"><img src="img/foot.jpg" alt="" /></p>
+  <p class="copy">
+  <span><b>í©í°ë¸ì½ë¦¬ì</b></span>
+  <span>ì£¼ì : (ì°)04797 ìì¸í¹ë³ì ì±ëêµ¬ ì±ìì´ë¡ 118 ì±ììì¹´ë°ë¯¸íì 1611í¸</span><br/>
+  <span>ëíìëª : ë°ì§ì</span>
+  <span>ì í : 02-438-0287 </span>
+  <span>í©ì¤ : 02-433-0287</span>
+  <span>ì¬ììë±ë¡ : 204-17-77448</span>
+  <span>Email : asiafield@msn.com</span><br/>
+  <span>Copyright &copy; 2016 Pactive Korea. All rights reserved.</span>
+  </p>
+  <p class="cus"><img src="img/customer.jpg" alt="" /></p>
+  <!-- copy //-->
+</div>
+<!-- tail //--></div>
+<!-- footer //-->
+</body>
+</html>
