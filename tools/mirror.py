@@ -36,7 +36,17 @@ def get(url, binary=False, tries=3):
         try:
             r = sess.get(url, timeout=45)
             if r.status_code == 200:
-                return r.content if binary else r.text
+                if binary:
+                    return r.content
+                # 원본 서버가 일부 페이지에 charset 을 보내지 않는다.
+                # requests 의 자동 추정에 맡기면 한글이 깨지므로 직접 UTF-8 우선으로 디코딩한다.
+                raw = r.content
+                for enc in ("utf-8", "cp949", "euc-kr"):
+                    try:
+                        return raw.decode(enc)
+                    except UnicodeDecodeError:
+                        continue
+                return raw.decode("utf-8", errors="replace")
             return None
         except Exception:
             time.sleep(1.2 * (i + 1))
@@ -168,6 +178,28 @@ def fetch_asset(p):
 
 with ThreadPoolExecutor(max_workers=8) as ex:
     list(ex.map(fetch_asset, sorted(assets)))
+
+# 원본에서 EUC-KR 로 내려오는 JS/CSS 는 UTF-8 로 변환해 둔다(주석 한글 깨짐 방지)
+for root, _dirs, files in os.walk(OUT):
+    if ".git" in root:
+        continue
+    for fn in files:
+        if not fn.endswith((".js", ".css")):
+            continue
+        p = os.path.join(root, fn)
+        raw = open(p, "rb").read()
+        try:
+            raw.decode("utf-8")
+            continue
+        except UnicodeDecodeError:
+            pass
+        for enc in ("cp949", "euc-kr"):
+            try:
+                open(p, "w", encoding="utf-8").write(raw.decode(enc))
+                _log.append("ENCODING %s (%s -> utf-8)" % (fn, enc))
+                break
+            except UnicodeDecodeError:
+                continue
 
 # ---------- 3. 링크 재작성 ----------
 def map_url(u, srcdir, depth):
